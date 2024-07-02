@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
+use Illuminate\Http\Redirectresponse;
 class ProductController extends Controller
 {
     /**
@@ -31,6 +32,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|string|max:200',
+            // 'image'=>'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
         return $request->all();
     }
 

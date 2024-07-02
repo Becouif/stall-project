@@ -4,7 +4,7 @@
     <MainLayout />
 
     <div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <form @submit.prevent="form.post(route('product.store'),{onSuccess: ()=> form.reset()})">
+      <form @submit.prevent="handleForm">
         <div class="mb-4">
           <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
           <input
@@ -15,6 +15,7 @@
             placeholder="Product Name"
             required
           />
+          <InputError :message="form.errors.name" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="description" class="block text-gray-700 font-bold mb-2">Description</label>
@@ -26,16 +27,18 @@
             rows="4"
             required
           ></textarea>
+          <InputError :message="form.errors.description" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="image" class="block text-gray-700 font-bold mb-2">Image</label>
           <input
             type="file"
             id="image"
-            @change="handleImageUpload"
+            @click="handleImageUpload"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
+          <InputError :message="form.errors.image" class="mt-2" />
         </div>
         <div class="mb-4">
           <label for="price" class="block text-gray-700 font-bold mb-2">Price</label>
@@ -49,6 +52,7 @@
             step="0.01"
             required
           />
+          <InputError :message="form.errors.price" class="mt-2" />
         </div>
         <div class="flex items-center justify-between">
           <button
@@ -65,41 +69,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import MainLayout from "@/Layouts/MainLayout.vue"
 import { Head,useForm  } from "@inertiajs/vue3"
-// import { } from '@inertiajs/inertia';
+import InputError from "@/Components/InputError.vue"
 
 const form = useForm({
   name: '',
   description: '',
   image: null,
   price: ''
-});
+})
+
+
 
 const handleImageUpload = (event) => {
-  const file = event.target.files[0];
+  console.log("handleimage function ")
+  const file = event.target.files[0] || event.dataTransfer.files;
   form.value.image = file;
 };
 
-const handleSubmit = () => {
-  // Prepare form data
-  const formData = {
-    name: form.value.name,
-    description: form.value.description,
-    image: form.value.image,
-    price: form.value.price,
-  };
-
-  // Send form data using Inertia.js
-  form.post(route('product.store'), {
-    onSuccess: () => {
-      // Reset form after successful submission
-      form.value.name = '';
-      form.value.description = '';
-      form.value.image = null;
-      form.value.price = '';
-    },
-  });
-};
+const handleForm = ()=>{
+  form.post(route('product.store'),{onSuccess: ()=> form.reset()})
+}
 </script>
