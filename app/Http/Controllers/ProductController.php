@@ -8,15 +8,21 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
+use App\Models\Product;
+
+use Spatie\MediaLibrary\HasMedia;
+
 use Illuminate\Http\Redirectresponse;
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():Response
     {
-        return Inertia::render('products/Index');
+        return Inertia::render('products/Index',[
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -46,7 +52,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Inertia::render('products/Show',[
+            'product' => Product::find($id),
+        ]);
     }
 
     /**
