@@ -1,7 +1,10 @@
 <script setup>
 import MainLayout from "@/Layouts/MainLayout.vue"
-import { Head } from "@inertiajs/vue3"
+import { Head,useForm } from "@inertiajs/vue3"
 defineProps(['products']);
+
+const form = useForm({})
+
 </script>
 
 <template>
@@ -28,9 +31,12 @@ defineProps(['products']);
           </div>
           <div class="px-6 pt-4 pb-2 flex justify-between items-center">
             <span class="text-gray-700 font-bold text-xl">₴{{ product.price }}</span>
-            <button @click.stop="buyNow(product.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <form @submit.prevent="form.post(route('cart.store',product))">
+              <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Buy Now
             </button>
+            </form>
+
           </div>
         </div>
       </a>

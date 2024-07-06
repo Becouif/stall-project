@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\ProfileController;
 use App\http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,11 +35,14 @@ Route::get('/',function(){
 
 Route::get('/products',[ProductController::class, 'index'])->name('product.index');
 
-Route::get('/product/create',[ProductController::class, 'create'])->name('product.create');
+// Route::get('/product/create',[ProductController::class, 'create'])->name('product.create');
 
-Route::post("/product/store",[ProductController::class, 'store'])->name('product.store');
+// Route::post("/product/store",[ProductController::class, 'store'])->name('product.store');
 
 Route::get('/product/{id}',[ProductController::class, 'show'])->name('product.show');
 
+Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
+
+Route::post('/cart/{id}',[CartController::class, 'store'])->name('cart.store');
 
 require __DIR__.'/auth.php';

@@ -28,24 +28,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return Inertia::render('products/Create');
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:200',
-            // 'image'=>'required',
-            'description' => 'required',
-            'price' => 'required'
-        ]);
-        return $request->all();
-    }
+
 
     /**
      * Display the specified resource.
