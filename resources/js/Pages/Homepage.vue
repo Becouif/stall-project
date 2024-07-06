@@ -1,5 +1,5 @@
 <script setup>
-import MainLayout from "@/Layouts/NavBar.vue"
+import NavBar from "@/Layouts/NavBar.vue";
 import {Head} from "@inertiajs/vue3"
 </script>
 
@@ -7,7 +7,7 @@ import {Head} from "@inertiajs/vue3"
 <template>
   <section  class="">
     <Head title="homepage" />
-    <MainLayout />
+    <NavBar />
   <div id="home" class="flex items-center justify-center min-h-screen">
 
 

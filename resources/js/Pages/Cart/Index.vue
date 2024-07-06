@@ -1,5 +1,5 @@
 <script setup>
-import MainLayout from '@/Layouts/NavBar.vue';
+import NavBar from '@/Layouts/NavBar.vue';
 import { Head } from '@inertiajs/vue3'
 
 defineProps(['cartItems']);
@@ -9,7 +9,7 @@ defineProps(['cartItems']);
 
   <Head title="Cart" />
 
-  <MainLayout />
+  <NavBar />
 
   <div class="container mx-auto p-4">
   <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">

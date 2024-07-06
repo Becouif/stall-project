@@ -1,5 +1,5 @@
 <script setup>
-import MainLayout from "@/Layouts/NavBar.vue"
+import NavBar from "@/Layouts/NavBar.vue"
 import { Head,useForm } from "@inertiajs/vue3"
 defineProps(['products']);
 
@@ -10,13 +10,10 @@ const form = useForm({});
 <template>
   <div>
     <Head title="product" />
-    <MainLayout>
-      <!-- my card  -->
-      <br>
-    </MainLayout>
+    <NavBar/>
 
-    <div class="container mx-auto p-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mycard container mx-auto p-4">
+    <div class="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <a 
         v-for="product in products" 
         :key="product.id" 
@@ -51,3 +48,14 @@ const form = useForm({});
 
   </div>
 </template>
+
+
+<style scoped>
+@media screen and (max-width: 768px) {
+  div.mycard {
+    margin-left: 2rem ;
+    /* background-color: black; */
+  }
+}
+
+</style>
