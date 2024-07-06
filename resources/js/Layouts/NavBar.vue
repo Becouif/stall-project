@@ -13,14 +13,14 @@ function toggleMenu() {
   <section id="navbar">
     <nav class="bg-gray-800 p-4">
       <div class="container mx-auto flex justify-between items-center">
-        <a href="/" class="text-white text-lg font-bold">
+        <a href="/" class="logo text-white text-lg font-bold">
           Stall
         </a>
         <div class="hidden md:flex space-x-4">
           <a href="/" class="text-gray-300 hover:text-white">Home</a>
           <a :href="route('product.index')" class="text-gray-300 hover:text-white">Products</a>
           <a :href="route('cart.index')" class="text-gray-300 hover:text-white">Cart</a>
-          <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+
         </div>
         <div class="md:hidden">
           <button @click="toggleMenu" class="text-gray-300 hover:text-white focus:outline-none">
@@ -34,7 +34,6 @@ function toggleMenu() {
         <a href="/" class="block text-gray-300 hover:text-white px-4 py-2">Home</a>
         <a :href="route('product.index')" class="block text-gray-300 hover:text-white px-4 py-2">Products</a>
         <a :href="route('cart.index')" class="block text-gray-300 hover:text-white px-4 py-2">Cart</a>
-        <a href="#" class="block text-gray-300 hover:text-white px-4 py-2">Contact</a>
       </div>
     </nav>
     <!-- end of nav bar  -->
@@ -48,3 +47,11 @@ function toggleMenu() {
 
 </section>
 </template>
+
+
+<style scoped>
+.logo {
+  font-size:2rem;
+}
+
+</style>

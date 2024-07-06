@@ -1,9 +1,9 @@
 <script setup>
-import MainLayout from "@/Layouts/MainLayout.vue"
+import MainLayout from "@/Layouts/NavBar.vue"
 import { Head,useForm } from "@inertiajs/vue3"
 defineProps(['products']);
 
-const form = useForm({})
+const form = useForm({});
 
 </script>
 

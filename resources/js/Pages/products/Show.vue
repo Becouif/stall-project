@@ -1,5 +1,5 @@
 <script setup>
-import MainLayout from "@/Layouts/MainLayout.vue"
+import MainLayout from "@/Layouts/NavBar.vue"
 import { Head } from '@inertiajs/vue3'
 
 defineProps(['product']);
